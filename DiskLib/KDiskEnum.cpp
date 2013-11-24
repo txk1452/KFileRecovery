@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "DiskEnum.h"
+#include "KDiskEnum.h"
 #include "PubFun.h"
 
 #include <SetupAPI.h>
@@ -9,24 +9,25 @@
 #define BUF_SIZE	1024
 
 
-CDiskEnum::CDiskEnum(void)
+CKDiskEnum::CKDiskEnum(void)
 {
 }
 
 
-CDiskEnum::~CDiskEnum(void)
+CKDiskEnum::~CKDiskEnum(void)
 {
 }
 
-CDiskEnum* CDiskEnum::Instance()
+CKDiskEnum* CKDiskEnum::Instance()
 {
-	static CDiskEnum oDiskEnum;
-
+	static CKDiskEnum oDiskEnum;
 	return &oDiskEnum;
 }
 
-int CDiskEnum::EnumDisk()
+int CKDiskEnum::EnumDisk()
 {
+	m_vecDiskInfo.clear();
+
 	//get a handle to a device information set
 	HDEVINFO hDevInfo = SetupDiGetClassDevs(
 		&GUID_DEVINTERFACE_DISK,      // class GUID
@@ -94,6 +95,16 @@ int CDiskEnum::EnumDisk()
 			break;
 		}
 
+		DISK_GEOMETRY dg;
+		if (!DeviceIoControl(hDevice, IOCTL_DISK_GET_DRIVE_GEOMETRY, NULL, 0, &dg, 
+			sizeof(DISK_GEOMETRY), &dwRead, NULL))
+		{
+			m_strError.Format(_T("Failed to enum disk when call DeviceIoControl,IoControlCode:IOCTL_DISK_GET_DRIVE_GEOMETRY,%s"), CPubFun::GetLastErrorMessage());
+			nRet = 1;
+			::CloseHandle(hDevice);
+			break;
+		}
+
 		::CloseHandle(hDevice);
 		hDevice = INVALID_HANDLE_VALUE;
 
@@ -102,6 +113,9 @@ int CDiskEnum::EnumDisk()
 		stDiskInfo.nDeviceNumber = sdNumber.DeviceNumber;
 		stDiskInfo.bRemovableMedia = pDevDesc->RemovableMedia;
 		stDiskInfo.strBusType = GetBusType(pDevDesc->BusType);
+		stDiskInfo.dwBytesPerSector = dg.BytesPerSector;
+		stDiskInfo.ulDiskSize = dg.Cylinders.QuadPart * (ULONG)dg.TracksPerCylinder *
+			(ULONG)dg.SectorsPerTrack * (ULONG)dg.BytesPerSector;
 
 		const char *p= (char*)pDevDesc;
 
@@ -137,7 +151,7 @@ int CDiskEnum::EnumDisk()
 }
 
 
-LPCTSTR CDiskEnum::GetBusType(int nBusType)
+LPCTSTR CKDiskEnum::GetBusType(int nBusType)
 {
 	struct _StBusTypeDesc
 	{

@@ -115,12 +115,13 @@
   <ItemGroup>
     <ClCompile Include="AboutDlg.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
-    <ClCompile Include="DiskLib\DiskEnum.cpp" />
+    <ClCompile Include="DiskLib\KDiskEnum.cpp" />
     <ClCompile Include="DiskLib\KDisk.cpp" />
     <ClCompile Include="DiskLib\PubFun.cpp" />
     <ClCompile Include="KFileRecovery.cpp" />
     <ClCompile Include="KFileRecoveryView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="SelectPartitionDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -129,19 +130,23 @@
   <ItemGroup>
     <ClInclude Include="AboutDlg.h" />
     <ClInclude Include="ChildFrm.h" />
-    <ClInclude Include="DiskLib\DiskEnum.h" />
+    <ClInclude Include="DiskLib\KDiskEnum.h" />
     <ClInclude Include="DiskLib\KDisk.h" />
     <ClInclude Include="DiskLib\KDiskDef.h" />
     <ClInclude Include="DiskLib\PubFun.h" />
     <ClInclude Include="KFileRecoveryView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SelectPartitionDlg.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KFileRecovery.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\disk.bmp" />
+    <None Include="res\diskhd.ico" />
+    <None Include="res\diskrm.ico" />
     <None Include="res\KFileRecovery.ico" />
     <None Include="res\KFileRecoveryDoc.ico" />
     <None Include="res\toolbar.bmp" />
@@ -149,4 +154,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="KFileRecovery.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

@@ -36,14 +36,17 @@
     <ClCompile Include="AboutDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DiskLib\DiskEnum.cpp">
-      <Filter>DiskLib</Filter>
-    </ClCompile>
     <ClCompile Include="DiskLib\KDisk.cpp">
       <Filter>DiskLib</Filter>
     </ClCompile>
     <ClCompile Include="DiskLib\PubFun.cpp">
       <Filter>DiskLib</Filter>
+    </ClCompile>
+    <ClCompile Include="DiskLib\KDiskEnum.cpp">
+      <Filter>DiskLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectPartitionDlg.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +68,6 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DiskLib\DiskEnum.h">
-      <Filter>DiskLib</Filter>
-    </ClInclude>
     <ClInclude Include="DiskLib\KDisk.h">
       <Filter>DiskLib</Filter>
     </ClInclude>
@@ -76,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="DiskLib\PubFun.h">
       <Filter>DiskLib</Filter>
+    </ClInclude>
+    <ClInclude Include="DiskLib\KDiskEnum.h">
+      <Filter>DiskLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectPartitionDlg.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +97,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="res\KFileRecoveryDoc.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\diskhd.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\diskrm.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\disk.bmp">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -33,6 +33,8 @@ public:
 	LPCTSTR GetError() const {return m_strError;}
 	operator HANDLE() {return m_hDisk;}
 
+	const std::vector<StDriver>& GetDriversList() {return m_vecDrivers;}
+
 private:
 	int AnalyseDriver(void* pMbr, DWORD dwMainPrevSectors, DWORD dwPrevSectors);
 

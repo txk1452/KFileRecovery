@@ -28,6 +28,7 @@ extern CAppModule _Module;
 #include <atlctrls.h>
 #include <atldlgs.h>
 #include <atlctrlw.h>
+#include <atlddx.h>
 
 
 //STL Include

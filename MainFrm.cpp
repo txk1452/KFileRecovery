@@ -9,6 +9,7 @@
 #include "KFileRecoveryView.h"
 #include "ChildFrm.h"
 #include "MainFrm.h"
+#include "SelectPartitionDlg.h"
 
 BOOL CMainFrame::PreTranslateMessage(MSG* pMsg)
 {
@@ -136,5 +137,16 @@ LRESULT CMainFrame::OnWindowTile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWnd
 LRESULT CMainFrame::OnWindowArrangeIcons(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	MDIIconArrange();
+	return 0;
+}
+
+LRESULT CMainFrame::OnRecUndeletefile(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled)
+{
+	CSelectPartitionDlg dlg;
+	if (dlg.DoModal() == IDOK)
+	{
+
+	}
+
 	return 0;
 }
