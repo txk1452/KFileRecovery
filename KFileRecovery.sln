@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KFileRecovery", "KFileRecovery.vcxproj", "{C8C044E4-FC1C-445C-9E93-F9750A488572}"
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KFileRecovery", "KFileRecovery.vcproj", "{F80FABFF-0F3F-42AA-94BF-13606E200577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8C044E4-FC1C-445C-9E93-F9750A488572}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C8C044E4-FC1C-445C-9E93-F9750A488572}.Debug|Win32.Build.0 = Debug|Win32
-		{C8C044E4-FC1C-445C-9E93-F9750A488572}.Release|Win32.ActiveCfg = Release|Win32
-		{C8C044E4-FC1C-445C-9E93-F9750A488572}.Release|Win32.Build.0 = Release|Win32
+		{F80FABFF-0F3F-42AA-94BF-13606E200577}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F80FABFF-0F3F-42AA-94BF-13606E200577}.Debug|Win32.Build.0 = Debug|Win32
+		{F80FABFF-0F3F-42AA-94BF-13606E200577}.Release|Win32.ActiveCfg = Release|Win32
+		{F80FABFF-0F3F-42AA-94BF-13606E200577}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

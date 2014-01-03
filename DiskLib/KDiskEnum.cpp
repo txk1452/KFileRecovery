@@ -1,13 +1,49 @@
 #include "StdAfx.h"
 #include "KDiskEnum.h"
 #include "PubFun.h"
-
 #include <SetupAPI.h>
-
 #pragma comment(lib, "Setupapi")
 
 #define BUF_SIZE	1024
 
+
+typedef struct _STORAGE_DEVICE_DESCRIPTOR {
+	ULONG  Version;
+	ULONG  Size;
+	UCHAR  DeviceType;
+	UCHAR  DeviceTypeModifier;
+	BOOLEAN  RemovableMedia;
+	BOOLEAN  CommandQueueing;
+	ULONG  VendorIdOffset;
+	ULONG  ProductIdOffset;
+	ULONG  ProductRevisionOffset;
+	ULONG  SerialNumberOffset;
+	STORAGE_BUS_TYPE  BusType;
+	ULONG  RawPropertiesLength;
+	UCHAR  RawDeviceProperties[1];
+} STORAGE_DEVICE_DESCRIPTOR, *PSTORAGE_DEVICE_DESCRIPTOR;
+
+typedef enum _STORAGE_PROPERTY_ID {
+	StorageDeviceProperty = 0,
+	StorageAdapterProperty,
+	StorageDeviceIdProperty
+} STORAGE_PROPERTY_ID, *PSTORAGE_PROPERTY_ID;
+
+typedef enum _STORAGE_QUERY_TYPE {
+	PropertyStandardQuery = 0, 
+	PropertyExistsQuery, 
+	PropertyMaskQuery, 
+	PropertyQueryMaxDefined 
+} STORAGE_QUERY_TYPE, *PSTORAGE_QUERY_TYPE;
+
+typedef struct _STORAGE_PROPERTY_QUERY {
+	STORAGE_PROPERTY_ID  PropertyId;
+	STORAGE_QUERY_TYPE  QueryType;
+	UCHAR  AdditionalParameters[1];
+} STORAGE_PROPERTY_QUERY, *PSTORAGE_PROPERTY_QUERY;
+
+#define IOCTL_STORAGE_QUERY_PROPERTY \
+	CTL_CODE(IOCTL_STORAGE_BASE, 0x0500, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 CKDiskEnum::CKDiskEnum(void)
 {
@@ -169,9 +205,7 @@ LPCTSTR CKDiskEnum::GetBusType(int nBusType)
 		{BusTypeRAID, _T("RAID")},
 		{BusTypeiScsi, _T("SCSI")},
 		{BusTypeSas, _T("SAS")},
-		{BusTypeSata, _T("SATA")},
-		{BusTypeVirtual, _T("VIRTUAL")},
-		{BusTypeFileBackedVirtual, _T("FILEBACKEDVIRTUAL")}
+		{BusTypeSata, _T("SATA")}
 	};
 
 	for(int i = 0; i < sizeof(stBusTypeDesc) / sizeof(stBusTypeDesc[0]); ++i)

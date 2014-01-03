@@ -49,8 +49,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	hRes = _Module.Init(NULL, hInstance);
 	ATLASSERT(SUCCEEDED(hRes));
 
-	AtlAxWinInit();
-
 	int nRet = Run(lpstrCmdLine, nCmdShow);
 
 	_Module.Term();
